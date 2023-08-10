@@ -2,7 +2,7 @@ import React from 'react';
 
 import './ExpensesFilter.css';
 
-export const ExpensesFilter: React.FC<{ changeFilter: (year: string) => void }> = (props) => {
+export const ExpensesFilter: React.FC<{ changeFilter: (year: string) => void, selectedDate: string }> = (props) => {
   const changeFilterHandler = (event: React.BaseSyntheticEvent) => {
     console.log({ event: event.target.value });
     props.changeFilter(event.target.value)

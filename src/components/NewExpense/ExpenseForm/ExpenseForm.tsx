@@ -4,7 +4,12 @@ import './ExpenseForm.css';
 import { IExpenseItem } from '../../../models/expense-item.interface';
 import dayjs from 'dayjs';
 
-export const ExpenseForm: React.FC<{ onSaveExpenseData: (expenseData: IExpenseItem) => void }> = (props) => {
+interface formFunctions {
+  onSaveExpenseData: (expenseData: IExpenseItem) => void;
+  onCancel: () => void
+}
+
+export const ExpenseForm: React.FC<formFunctions> = (props) => {
   const initState = {
     title: '',
     amount: 0,
@@ -29,6 +34,11 @@ export const ExpenseForm: React.FC<{ onSaveExpenseData: (expenseData: IExpenseIt
     setState(() => initState);
   }
 
+  const cancelHandler = (event: BaseSyntheticEvent) => {
+    event.preventDefault();
+    props.onCancel();
+  }
+
   return (
     <form action="" onSubmit={submitHandler}>
       <div className="new-expense__controls">
@@ -46,6 +56,7 @@ export const ExpenseForm: React.FC<{ onSaveExpenseData: (expenseData: IExpenseIt
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={cancelHandler}>Cancel</button>
         <button type="submit">Add expense</button>
       </div>
     </form>
