@@ -1,9 +1,9 @@
 import React from 'react';
 
 import './ExpenseItem.css';
-import { IExpenseItem } from '../../models/expense-item.interface';
+import { IExpenseItem } from '../../../models/expense-item.interface';
 import { ExpenseDate } from '../ExpenseDate/ExpenseDate';
-import { Card } from '../Card/Card';
+import { Card } from '../../UI/Card/Card';
 
 export const ExpenseItem: React.FC<{ expense: IExpenseItem }> = (props) => {
   return (
@@ -12,5 +12,5 @@ export const ExpenseItem: React.FC<{ expense: IExpenseItem }> = (props) => {
       <h2 className="expense-item__description">{props.expense.title}</h2>
       <div className="expense-item__price">${props.expense.amount}</div>
     </Card>
-  )
+  );
 };

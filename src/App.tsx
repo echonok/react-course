@@ -2,6 +2,7 @@ import React from 'react';
 
 import { IExpenseItem } from './models/expense-item.interface';
 import { Expenses } from './components/Expenses/Expenses';
+import { NewExpense } from './components/NewExpense/NewExpense';
 
 export const App: React.FC = () => {
 
@@ -32,8 +33,13 @@ export const App: React.FC = () => {
     },
   ]
 
+  const handler = (expense: any) => {
+    console.log({ expense })
+  }
+
   return (
     <div>
+      <NewExpense saveExpense={handler}/>
       <Expenses expenses={expenses}></Expenses>
     </div>
   );
